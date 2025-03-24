@@ -1,0 +1,13 @@
+name: AquarelleAuth
+version: 1.0
+main: org.pyotcho.aquarelleauth.AquarelleAuth
+api-version: 1.20
+description: Auth plugin
+author: Pyotcho
+commands:
+  reg:
+    description: Registration new player
+    usage: /reg <password> <password>
+  login:
+    description: Authorisation player
+    usage: /login <password>
