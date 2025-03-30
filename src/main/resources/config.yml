@@ -1,6 +1,6 @@
 database:
   host: localhost
-  port: 3341
+  port: 1234
   name: aquarelleauth
   username: postgres
-  password: lomalo123
+  password: 1234567890

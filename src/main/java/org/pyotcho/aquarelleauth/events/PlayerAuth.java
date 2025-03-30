@@ -9,7 +9,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
-import org.pyotcho.aquarelleauth.AquarelleAuth;
 import org.pyotcho.aquarelleauth.util.DatabaseManager;
 
 import javax.annotation.Nullable;
@@ -18,12 +17,10 @@ import java.util.Set;
 import java.util.UUID;
 
 public class PlayerAuth implements Listener, CommandExecutor {
-    private final AquarelleAuth plugin;
     private final DatabaseManager databaseManager;
     private final Set<UUID> unauthenticatedPlayers = new HashSet<>();
 
-    public PlayerAuth(AquarelleAuth plugin, DatabaseManager databaseManager) {
-        this.plugin = plugin;
+    public PlayerAuth(DatabaseManager databaseManager) {
         this.databaseManager = databaseManager;
     }
 
@@ -53,13 +50,12 @@ public class PlayerAuth implements Listener, CommandExecutor {
     @Override
     public boolean onCommand(@Nullable CommandSender sender, @Nullable Command command,
                              @Nullable String label, @Nullable String[] args) {
-        if (!(sender instanceof Player)) {
+        if (!(sender instanceof Player player)) {
             assert sender != null;
             sender.sendMessage("This command only for players!");
             return true;
         }
 
-        Player player = (Player) sender;
         UUID uuid = player.getUniqueId();
 
         assert command != null;

@@ -12,11 +12,6 @@ public class DatabaseManager {
 
     public DatabaseManager(AquarelleAuth plugin) {
         this.plugin = plugin;
-        try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException e) {
-            plugin.getLogger().severe("Драйвер PostgreSQL не найден: " + e.getMessage());
-        }
         initializeDatabase();
     }
 
